@@ -12,7 +12,7 @@ A Javascript wrapper around Tumblr's in-blog Javascript API. This code is still 
 # Installation
 Include wm.js in the `<head>` of your Tumblr blog,
 ```html
-<script src="https://cdn.rawgit.com/aidilfbk/Washing-Machine/35815d99367cae8dd248c25da93e983ca4a1910a/wm.js"></script>
+<script src="https://cdn.rawgit.com/aidilfbk/Washing-Machine/cf9ae10f5387810c6a872b35e0eb305ea004f7a3/wm.js"></script>
 ```
 
 # Usage
