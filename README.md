@@ -1,13 +1,19 @@
 Washing Machine
 ===============
 
-A Javascript wrapper around Tumblr's in-blog Javascript API. Include wm.js in the `<head>` of your Tumblr blog. This code is still in beta so please report any bugs you find.
+A Javascript wrapper around Tumblr's in-blog Javascript API. This code is still in beta so please report any bugs you find.
 
 # Requirements
 - `postMessage` – Tumblr's JS API uses it
 - `addEventListener` – binding to the `message` event emitted by Tumblr's use of `postMessage`
 - `localStorage` – caching the post liked status on the client-side
 - `JSON` – serialising in-memory store to `localStorage`
+
+# Installation
+Include wm.js in the `<head>` of your Tumblr blog,
+```html
+<script src="https://cdn.rawgit.com/aidilfbk/Washing-Machine/022b7bfca0d6518460ea279358ebad41444fa5c7/wm.js"></script>
+```
 
 # Usage
 ## <a name="isLoggedIn"></a>Getting the visitor's login state
