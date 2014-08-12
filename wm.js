@@ -115,20 +115,10 @@
 	post_like_status._delayedSyncPersistentStore = Debounce(2000, post_like_status._syncPersistentStore);
 	
 	var cache = {
-		logged_in: undefined
-	},
-	callback_queue = {
-		'logged_in': []
+		logged_in: (document.cookie.indexOf('logged_in=1') !== -1)
 	},
 	page_message_queue = [],
 	message_parsers = {
-		'user_logged_in': function(isLoggedIn){
-			cache.logged_in = (isLoggedIn === "Yes");
-			var callback;
-			while(callback = callback_queue.logged_in.shift()){
-				callback.call(undefined, cache.logged_in);
-			}
-		},
 		'like_state_update': function(jsonTxt){
 			var update = JSON.parse(jsonTxt);
 			post_like_status._notify(update);
@@ -166,11 +156,7 @@
 	window.WashingMachine = {
 		debug: false,
 		isLoggedIn: function(callback){
-			if(cache.logged_in !== undefined){
-				callback.call(undefined, cache.logged_in);
-			} else {
-				callback_queue.logged_in.push(callback);
-			}
+			callback.call(undefined, cache.logged_in);
 		},
 		getLikeStatusByPostIds: function(post_ids, callback){
 			if(!TUMBLR_IFRAME_LOADED){
