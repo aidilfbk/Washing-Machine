@@ -96,6 +96,10 @@
 						)
 				}, this);
 			if(needs_updating_ids.length > 0){
+				if(!TUMBLR_IFRAME_LOADED){
+					message_queue.push(['getLikeStatusByPostIds', arguments]);
+					return;
+				}
 				var ids = needs_updating_ids.slice(0);
 				if(needs_updating_ids.length === 1){
 					// Tumblr JS API doesn't respond correctly to single post_id requests
@@ -159,10 +163,6 @@
 			callback.call(undefined, cache.logged_in);
 		},
 		getLikeStatusByPostIds: function(post_ids, callback){
-			if(!TUMBLR_IFRAME_LOADED){
-				message_queue.push(['getLikeStatusByPostIds', arguments]);
-				return;
-			}
 			post_like_status.get(post_ids, callback);
 		}
 	}
