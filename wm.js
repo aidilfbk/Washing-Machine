@@ -142,7 +142,7 @@
 		}
 	},
 	process_page_messages = Debounce(600, function(){
-		console.log(page_message_queue.slice(0));
+		if(window.WashingMachine.debug) console.log(JSON.parse(JSON.stringify(page_message_queue)));
 		var message;
 		while(message = page_message_queue.shift()){
 			var message_type = message.shift(),
@@ -164,6 +164,7 @@
 	
 	var message_queue = [];
 	window.WashingMachine = {
+		debug: false,
 		isLoggedIn: function(callback){
 			if(cache.logged_in !== undefined){
 				callback.call(undefined, cache.logged_in);
